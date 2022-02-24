@@ -25,7 +25,9 @@ if(operation == 'web'){
             Object.keys(data).map((companyName)=>{
                 tableBody += `
                 <tr style="background-color:${
-                    data[companyName]['Gain/lost since last run'] < 0? "red": "green"
+                    typeof data[companyName]['Gain/lost since last run'] === 'string' ? 'white' : 
+                        data[companyName]['Gain/lost since last run'] < 0 ? "red": 
+                            data[companyName]['Gain/lost since last run'] == 0 ? "white": "green"
                 }">
                     <td>${companyName}</td>
                     <td style="text-align:right;">${data[companyName]['High']}</td>
