@@ -1,0 +1,17 @@
+{
+  "name": "stock",
+  "version": "1.0.0",
+  "description": "Sample project",
+  "main": "main.js",
+  "scripts": {
+    "cmd": "node main.js cmd",
+    "web": "node main.js web"
+  },
+  "author": "Adarsh R Jayan",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.3"
+  }
+}
