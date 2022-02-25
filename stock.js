@@ -30,7 +30,7 @@ module.exports = {
                     "Change": change,
                     "% Gain/Loss": gain,
                 };
-                localDB[companyName]["Gain/lost since last run"] = gain - previousGain; 
+                localDB[companyName]["Gain/lost since last run"] = Math.round((gain - previousGain + Number.EPSILON) * 100) / 100;  
             }else{
                 localDB[companyName] = {
                     "High": high,
@@ -57,9 +57,9 @@ module.exports = {
             const lastPrice = Number(dom(columns[3]).text().replace(/,/g,''));
             const prevClose = Number(dom(columns[4]).text().replace(/,/g,''));
             const change = Number(dom(columns[5]).text().replace(/,/g,''));
-            const gain = Number(dom(columns[6]).text().replace(/,/g,''));
+            const lose = Number(dom(columns[6]).text().replace(/,/g,''));
             if(localDB[companyName]){
-                const previousGain = localDB[companyName]["% Gain/Loss"];
+                const previousLoss = localDB[companyName]["% Gain/Loss"];
                 localDB[companyName] = {
                     "High": high,
                     "Low": low,
@@ -68,7 +68,7 @@ module.exports = {
                     "Change": change,
                     "% Gain/Loss": gain,
                 };
-                localDB[companyName]["Gain/lost since last run"] = gain - previousGain; 
+                localDB[companyName]["Gain/lost since last run"] = Math.round((loss - previousLoss + Number.EPSILON) * 100) / 100; 
             }else{
                 localDB[companyName] = {
                     "High": high,
