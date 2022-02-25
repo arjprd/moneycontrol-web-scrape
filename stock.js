@@ -85,6 +85,9 @@ module.exports = {
     invoke: async () => {
         const localDBRaw = fs.readFileSync("localDB.json");
         localDB = JSON.parse(localDBRaw);
+        Object.keys(localDB).map((companyName)=>{
+            localDB[companyName]["Gain/lost since last run"] = 0;
+        });
         const promiseList = []
         promiseList.push(module.exports.getCurrentGainers());
         promiseList.push(module.exports.getCurrentLooser());
